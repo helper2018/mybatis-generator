@@ -220,8 +220,7 @@ public class ExistingJavaFileVisitor extends ASTVisitor {
     
     boolean isGeneratedType(String typeName) {
         return "Generated".equals(typeName)
-                || "javax.annotation.Generated".equals(typeName)
-                || "jakarta.annotation.Generated".equals(typeName);
+                || "javax.annotation.Generated".equals(typeName);
     }
 
     public boolean containsInnerClass(String name) {

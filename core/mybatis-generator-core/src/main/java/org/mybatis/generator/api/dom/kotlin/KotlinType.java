@@ -5,7 +5,7 @@
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
  *
- *       https://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,7 +23,6 @@ import java.util.Set;
 
 public class KotlinType extends KotlinNamedItemContainer {
 
-    public static final String DEFAULT_COMPANION_OBJECT_NAME = "companion";
     private final List<KotlinProperty> constructorProperties = new ArrayList<>();
     private final Type type;
     private final Set<String> superTypes = new HashSet<>();
@@ -31,8 +30,7 @@ public class KotlinType extends KotlinNamedItemContainer {
     public enum Type {
         CLASS("class"), //$NON-NLS-1$
         INTERFACE("interface"), //$NON-NLS-1$
-        OBJECT("object"), //$NON-NLS-1$
-        COMPANION_OBJECT("companion object"); //$NON-NLS-1$
+        OBJECT("object"); //$NON-NLS-1$
 
         private final String value;
 
@@ -87,13 +85,6 @@ public class KotlinType extends KotlinNamedItemContainer {
 
     public static Builder newObject(String name) {
         return new Builder(Type.OBJECT, name);
-    }
-
-    public static Builder newCompanionObject() {
-        return new Builder(Type.COMPANION_OBJECT, DEFAULT_COMPANION_OBJECT_NAME);
-    }
-    public static Builder newCompanionObject(String name) {
-        return new Builder(Type.COMPANION_OBJECT, name);
     }
 
     public static class Builder extends NamedItemContainerBuilder<Builder> {

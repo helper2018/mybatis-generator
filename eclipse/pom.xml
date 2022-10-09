@@ -18,11 +18,11 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.mybatis.generator</groupId>
   <artifactId>org.mybatis.generator.eclipse.parent</artifactId>
-  <version>1.4.2-SNAPSHOT</version>
+  <version>1.4.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <inceptionYear>2006</inceptionYear>
 
@@ -40,9 +40,9 @@
   </modules>
 
   <properties>
-    <tycho-version>3.0.0</tycho-version>
-    <tycho-extras-version>3.0.0</tycho-extras-version>
-    <license.version>4.2.rc3</license.version>
+    <tycho-version>2.7.0</tycho-version>
+    <tycho-extras-version>2.7.0</tycho-extras-version>
+    <license.version>4.2.rc2</license.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- Sonar -->
@@ -100,12 +100,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-antrun-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.0.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>3.1.0</version>
         </plugin>
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
@@ -212,7 +212,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.8</version>
+        <version>0.8.6</version>
         <configuration>
           <append>true</append>
         </configuration>

@@ -5,7 +5,7 @@
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
  *
- *       https://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
@@ -55,9 +55,6 @@ public class DefaultCommentGenerator implements CommentGenerator {
     private boolean addRemarkComments;
 
     private SimpleDateFormat dateFormat;
-
-    private FullyQualifiedJavaType generatedImport =
-            new FullyQualifiedJavaType("jakarta.annotation.Generated"); //$NON-NLS-1$
 
     public DefaultCommentGenerator() {
         super();
@@ -110,10 +107,6 @@ public class DefaultCommentGenerator implements CommentGenerator {
 
         addRemarkComments = isTrue(properties.getProperty(PropertyRegistry.COMMENT_GENERATOR_ADD_REMARK_COMMENTS));
 
-        if (isTrue(properties.getProperty(PropertyRegistry.COMMENT_GENERATOR_USE_LEGACY_GENERATED_ANNOTATION))) {
-            generatedImport = new FullyQualifiedJavaType("javax.annotation.Generated"); //$NON-NLS-1$
-        }
-
         String dateFormatString = properties.getProperty(PropertyRegistry.COMMENT_GENERATOR_DATE_FORMAT);
         if (StringUtility.stringHasValue(dateFormatString)) {
             dateFormat = new SimpleDateFormat(dateFormatString);
@@ -145,7 +138,7 @@ public class DefaultCommentGenerator implements CommentGenerator {
     }
 
     /**
-     * Returns a formatted date string to include in the Javadoc tag and XML
+     * Returns a formated date string to include in the Javadoc tag and XML
      * comments. You may return null if you do not want the date in these
      * documentation elements.
      *
@@ -390,7 +383,7 @@ public class DefaultCommentGenerator implements CommentGenerator {
     @Override
     public void addGeneralMethodAnnotation(Method method, IntrospectedTable introspectedTable,
             Set<FullyQualifiedJavaType> imports) {
-        imports.add(generatedImport);
+        imports.add(new FullyQualifiedJavaType("javax.annotation.Generated")); //$NON-NLS-1$
         String comment = "Source Table: " + introspectedTable.getFullyQualifiedTable().toString(); //$NON-NLS-1$
         method.addAnnotation(getGeneratedAnnotation(comment));
     }
@@ -398,7 +391,7 @@ public class DefaultCommentGenerator implements CommentGenerator {
     @Override
     public void addGeneralMethodAnnotation(Method method, IntrospectedTable introspectedTable,
             IntrospectedColumn introspectedColumn, Set<FullyQualifiedJavaType> imports) {
-        imports.add(generatedImport);
+        imports.add(new FullyQualifiedJavaType("javax.annotation.Generated")); //$NON-NLS-1$
         String comment = "Source field: " //$NON-NLS-1$
                 + introspectedTable.getFullyQualifiedTable().toString() + "." //$NON-NLS-1$
                 + introspectedColumn.getActualColumnName();
@@ -408,7 +401,7 @@ public class DefaultCommentGenerator implements CommentGenerator {
     @Override
     public void addFieldAnnotation(Field field, IntrospectedTable introspectedTable,
             Set<FullyQualifiedJavaType> imports) {
-        imports.add(generatedImport);
+        imports.add(new FullyQualifiedJavaType("javax.annotation.Generated")); //$NON-NLS-1$
         String comment = "Source Table: " + introspectedTable.getFullyQualifiedTable().toString(); //$NON-NLS-1$
         field.addAnnotation(getGeneratedAnnotation(comment));
     }
@@ -416,7 +409,7 @@ public class DefaultCommentGenerator implements CommentGenerator {
     @Override
     public void addFieldAnnotation(Field field, IntrospectedTable introspectedTable,
             IntrospectedColumn introspectedColumn, Set<FullyQualifiedJavaType> imports) {
-        imports.add(generatedImport);
+        imports.add(new FullyQualifiedJavaType("javax.annotation.Generated")); //$NON-NLS-1$
         String comment = "Source field: " //$NON-NLS-1$
                 + introspectedTable.getFullyQualifiedTable().toString() + "." //$NON-NLS-1$
                 + introspectedColumn.getActualColumnName();
@@ -439,7 +432,7 @@ public class DefaultCommentGenerator implements CommentGenerator {
     @Override
     public void addClassAnnotation(InnerClass innerClass, IntrospectedTable introspectedTable,
             Set<FullyQualifiedJavaType> imports) {
-        imports.add(generatedImport);
+        imports.add(new FullyQualifiedJavaType("javax.annotation.Generated")); //$NON-NLS-1$
         String comment = "Source Table: " + introspectedTable.getFullyQualifiedTable().toString(); //$NON-NLS-1$
         innerClass.addAnnotation(getGeneratedAnnotation(comment));
     }

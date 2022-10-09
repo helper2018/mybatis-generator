@@ -5,7 +5,7 @@
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
  *
- *       https://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
@@ -41,7 +41,7 @@ import org.xml.sax.SAXParseException;
 class XmlCodeGenerationTest {
 
     @ParameterizedTest
-    @MethodSource("xmlFileGenerator")
+    @MethodSource("generateXmlFiles")
     void testXmlParse(GeneratedXmlFile generatedXmlFile) {
         ByteArrayInputStream is = new ByteArrayInputStream(
                 generatedXmlFile.getFormattedContent().getBytes());
@@ -57,8 +57,10 @@ class XmlCodeGenerationTest {
         }
     }
 
-    static List<GeneratedXmlFile> xmlFileGenerator() throws Exception {
-        return new ArrayList<>(generateXmlFilesMybatis());
+    static List<GeneratedXmlFile> generateXmlFiles() throws Exception {
+        List<GeneratedXmlFile> generatedFiles = new ArrayList<>();
+        generatedFiles.addAll(generateXmlFilesMybatis());
+        return generatedFiles;
     }
 
     static List<GeneratedXmlFile> generateXmlFilesMybatis() throws Exception {
